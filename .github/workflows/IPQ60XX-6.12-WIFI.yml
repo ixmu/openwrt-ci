@@ -114,6 +114,13 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: Fix mbedtls and GCC 14 compatibility
+      run: |
+        cd $OPENWRT_PATH
+        sed -i 's/TARGET_CFLAGS +=/TARGET_CFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -Wno-error/g' package/libs/mbedtls/Makefile
+        sed -i '/CMAKE_OPTIONS +=/a \	-DMBEDTLS_FATAL_WARNINGS=OFF' package/libs/mbedtls/Makefile
+        sed -i 's/-Wno-unterminated-string-initialization//g' package/libs/mbedtls/Makefile
+        
     - name: Compile Firmware(开始编译固件)
       id: compile
       run: |
