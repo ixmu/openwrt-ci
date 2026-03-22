@@ -1,4 +1,4 @@
-name: IPQ60XX-6.12-WIFI
+name: LiBwrt-IPQ60XX-6.12
 
 on:
   workflow_dispatch:
