@@ -100,11 +100,11 @@ jobs:
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |
+        cd $OPENWRT_PATH
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         make defconfig
         chmod +x $DIY_SCRIPT
-        cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
     - name: Download DL Package(下载DL软件包)
