@@ -103,6 +103,7 @@ jobs:
   
     - name: Load Custom Configuration(加载自定义配置)
       run: |  
+        find $GITHUB_WORKSPACE -name $DIY_SCRIPT
         cd $OPENWRT_PATH
         chmod +x $DIY_SCRIPT
         $GITHUB_WORKSPACE/scripts/$DIY_SCRIPT
