@@ -97,8 +97,8 @@ jobs:
     - name: Load Custom Configuration(加载自定义配置)
       run: |
         cd $OPENWRT_PATH
-        chmod +x $DIY_SCRIPT
-        $GITHUB_WORKSPACE/$DIY_SCRIPT
+        chmod +x $GITHUB_WORKSPACE/scripts/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/scripts/$DIY_SCRIPT
 
     - name: Download DL Package(下载DL软件包)
       run: |
