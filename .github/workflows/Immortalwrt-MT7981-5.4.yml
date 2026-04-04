@@ -108,11 +108,11 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: 开启 SSH 调试 (无论成败)
-     uses: mxschmitt/action-tmate@v3
-     if: ${{ always() }}
-     with:
-       limit-access-to-actor: true
+    - name: 开启 SSH 调试
+      uses: mxschmitt/action-tmate@v3
+      if: ${{ always() }}
+      with:
+        limit-access-to-actor: true
        
     - name: Compile Firmware(开始编译固件)
       id: compile
