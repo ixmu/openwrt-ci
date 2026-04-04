@@ -96,11 +96,12 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/$DIY_SCRIPT
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+        cp $CONFIG_FILE .config 
+        make defconfig
+
     - name: Download DL Package(下载DL软件包)
       run: |
         cd $OPENWRT_PATH
-        cp $CONFIG_FILE .config 
-        make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
