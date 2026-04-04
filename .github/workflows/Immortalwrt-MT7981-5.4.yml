@@ -55,7 +55,7 @@ jobs:
         temp-reserve-mb: 100
         root-reserve-mb: 1024
 
-    - name: Checkout
+    - name: Checkout（同步仓库内容）
       uses: actions/checkout@main
 
     - name: Clone Source Code(克隆源代码)
