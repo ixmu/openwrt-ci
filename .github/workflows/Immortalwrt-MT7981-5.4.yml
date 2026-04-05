@@ -107,12 +107,12 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Setup tmate session(开启SSH调试会话)
-        uses: mxschmitt/action-tmate@v3
-        timeout-minutes: 5
-        continue-on-error: true
-        with:
-          limit-access-to-actor: true
-          detached: false
+      uses: mxschmitt/action-tmate@v3
+       timeout-minutes: 5
+       continue-on-error: true
+       with:
+        limit-access-to-actor: true
+        detached: false
 
     - name: Compile Firmware(开始编译固件)
       id: compile
