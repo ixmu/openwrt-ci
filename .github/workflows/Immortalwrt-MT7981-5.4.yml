@@ -102,7 +102,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
         cp $GITHUB_WORKSPACE/$CONFIG_FILE .config 
-        make defconfig
+        make defconfig >>/dev/null
 
     - name: Setup tmate session(开启SSH调试)
       if: "github.event.inputs.debug_enabled == 'true'"
