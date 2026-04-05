@@ -96,7 +96,7 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/$DIY_SCRIPT
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-        cp $CONFIG_FILE .config 
+        cp $GITHUB_WORKSPACE/$CONFIG_FILE .config 
         make defconfig
 
     - name: Download DL Package(下载DL软件包)
