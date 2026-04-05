@@ -107,7 +107,6 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Setup tmate session(开启SSH调试会话)
-        if: contains(github.event.head_commit.message, '[debug]')
         uses: mxschmitt/action-tmate@v3
         timeout-minutes: 5
         continue-on-error: true
