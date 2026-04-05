@@ -4,11 +4,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 0 19 * * *
-  inputs:
-      debug_enabled:
-        description: 'Run with SSH'
-        type: boolean
-        default: false
 
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
@@ -104,12 +99,6 @@ jobs:
         cp $GITHUB_WORKSPACE/$CONFIG_FILE .config 
         make defconfig >>/dev/null
         
-    - name: Setup tmate session(开启SSH调试)
-      if: "github.event.inputs.debug_enabled == 'true'"
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
-
     - name: Download DL Package(下载DL软件包)
       run: |
         cd $OPENWRT_PATH
