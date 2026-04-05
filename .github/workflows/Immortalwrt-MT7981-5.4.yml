@@ -6,10 +6,9 @@ on:
     - cron: 0 19 * * *
   inputs:
       debug_enabled:
-        description: '是否开启 SSH 调试'
-        required: false
-        default: 'false'
-        type: boolean
+        description: 'Run with SSH'
+        type: boolean       # 这里定义了 boolean，GitHub 界面会显示一个勾选框
+        default: false
 
 env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x.git
@@ -106,11 +105,8 @@ jobs:
         make defconfig
 
     - name: Setup tmate session(开启SSH调试)
-      run: |
-        if: ${{ inputs.debug_enabled == 'true' || inputs.debug_enabled == true }}
+      if: inputs.debug_enabled == true
         uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
 
     - name: Download DL Package(下载DL软件包)
       run: |
