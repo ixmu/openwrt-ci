@@ -105,7 +105,17 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-       
+
+    - name: Setup tmate session(开启SSH调试会话)
+        # 检测当前 commit message 是否包含 "[debug]"
+        if: contains(github.event.head_commit.message, '[debug]')
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 5
+        continue-on-error: true
+        with:
+          limit-access-to-actor: true
+          detached: false
+
     - name: Compile Firmware(开始编译固件)
       id: compile
       run: |
