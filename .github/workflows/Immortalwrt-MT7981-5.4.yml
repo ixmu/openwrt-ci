@@ -106,7 +106,7 @@ jobs:
         make defconfig
 
     - name: Setup tmate session(开启SSH调试)
-        if: github.event.inputs.debug_enabled == 'true'
+        if: inputs.debug_enabled == true || inputs.debug_enabled == 'true'
         uses: mxschmitt/action-tmate@v3
         with:
           limit-access-to-actor: true
